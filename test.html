@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>金帛移动端ui</title>
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<link rel="stylesheet" href="jinbo.ui.css">
+<style>
+body {
+	background: #f04a3a;
+}
+</style>
+</head>
+<body>
+<!-- 蒙版 -->
+<div class="ui-overlay ui-fixed-center" hide></div>
+
+<!-- simple dialog -->
+<div class="ui-sm-dialog ui-center" hide>密码错误</div>
+
+<!-- fullLoading -->
+<div class="ui-fullloading ui-sm-dialog ui-center text-center" hide><span class="ui-loading"></span>加载中</div>
+<!-- small fullLoading -->
+<div class="ui-sm-loading ui-sm-dialog ui-center" hide>加载中</div>
+
+<!-- dialog -->
+<div class="ui-dialog ui-center" hide>
+	<p class="text-center">密码错误</p>
+	<div class="ui-btn-group">
+		<a href="javascript:;" class="ui-btn">确认</a>
+		<a href="javascript:;" class="ui-btn">取消</a>
+	</div>
+</div>
+<!-- dialog has title -->
+<div class="ui-dialog ui-center" hide>
+	<h4 class="ui-dialog-title">财宝宝提示：</h4>
+	<p class="text-center fz14">密码错误密码错误密码错误密码错误密码错误密码错误密码错误密码错误</p>
+	<div class="ui-btn-group mgt15">
+		<a href="javascript:;" class="ui-btn">确认</a>
+		<a href="javascript:;" class="ui-btn">取消</a>
+	</div>
+</div>
+<!-- dialog has input -->
+<div class="ui-dialog ui-center" hide>
+	<h4 class="ui-dialog-title">默认手机号设置：</h4>
+	<input type="text" class="ui-dialog-input mgt10" placeholder="请输入手机号">
+	<p class="ui-dialog-msg mgt15 cl-red fz12 text-center">手机号格式不对</p>
+	<div class="ui-btn-group mgt15">
+		<a href="javascript:;" class="ui-btn">确认</a>
+		<a href="javascript:;" class="ui-btn">取消</a>
+	</div>
+</div>
+
+<script src="zepto.min.js"></script>
+<script src="jinbo.ui.js"></script>
+</body>
+</html>
