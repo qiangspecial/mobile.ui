@@ -1,3 +1,12 @@
+/*
+ * Mobile UI - v1.0 - 2015-03-03
+ * https://github.com/qiangspecial/mobile.ui
+ *
+ * Copyright (c) 2015 Jinbo 
+ *
+ * Mail: qiangspecial@qq.com
+ */
+
 var ui = ui || {};
 
 /**
