@@ -20,7 +20,7 @@ var ui = ui || {};
 		content: "",			// String   弹出弹窗的内容
 		data: {
 			title: "财宝宝提示：",
-			text: "测试text测试text测试text测试text",
+			text: "...",
 			btn: [{
 				text: "确认",
 				"data-type": "close",
@@ -33,8 +33,7 @@ var ui = ui || {};
 		},				// String	弹出弹窗的文案
 		needOverlay: true,		// Boolean  是否添加遮罩层
 		autoClose: 0,			// Number   自动关闭弹出窗时间,0为不自动关闭
-		beforeInit: null,
-		beforeClose: null, 
+		afterInit: null,
 		callback: null			// Function 关闭弹出层执行的回调函数
 	},
 	// 获取默认的content
@@ -165,7 +164,7 @@ var ui = ui || {};
 		onEvent: function() {
 			var _this = this;
 
-			_this.$overlay.on("touchend", "[data-type='close']", function() {
+			_this.$.on("touchend", "[data-type='close']", function() {
 				_this.close();
 			});
 		},
@@ -194,26 +193,58 @@ var ui = ui || {};
 			$("body").append($overlay.html(content));
 			_this.$ = $overlay.show(200);		
 			_this.onEvent();
+			if (_this.afterInit) _this.afterInit.call($overlay);
 			if (o.autoClose) _this.autoClose(o.autoClose);
 		}
 	};
 
+	// 弹窗
 	ui.dialog = function(o) {
 		return new Dialog(o);
 	};
+
+	// 提示弹窗
+	ui.message = function(text, callback) {
+		return new Dialog({
+			content: '<div class="ui-sm-dialog ui-center">{{text}}</div>',
+			data: {
+				text: text
+			},
+			needOverlay: false,
+			autoClose: 3000,
+			callback: callback
+		});
+	};
+
+	// 错误弹窗
+	ui.error = function(text, callback) {
+		return new Dialog({
+			content: '<div class="ui-sm-dialog ui-center">{{text}}</div>',
+			data: {
+				text: text
+			},
+			needOverlay: false,
+			autoClose: 3000,
+			callback: callback
+		});
+	};
+
+	// loading
+	ui.loading = function(text) {
+		return new Dialog({
+			content: '<div class="ui-fullloading ui-sm-dialog ui-center text-center"><span class="ui-loading"></span>{{text}}</div>',
+			data: {
+				text: text || "加载中"
+			}
+		});
+	};
+	// small loading
+	ui.smLoading = function(text) {
+		return new Dialog({
+			content: '<div class="ui-sm-loading ui-sm-dialog ui-center">{{text}}</div>',
+			data: {
+				text: text || "加载中"
+			}
+		});
+	};
 }(ui, typeof Zepto !== "undefined" ? Zepto : jQuery));
-
-
-
-var contentDate = {
-	title: "财宝宝提示：",
-	text: "密码错误密码错误密码错误密码错误密码错误密码错误密码错误密码错误",
-	btn: [{
-		text: "确认",
-		id: "btn1"
-	}, {
-		text: "取消",
-		id: "btn2"
-	}]
-};
-var dialog = ui.dialog({autoClose: 3000});
