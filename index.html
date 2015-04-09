@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>金帛移动端ui</title>
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<link rel="stylesheet" href="./css/m-ui.css">
+<style>
+body {
+	background: #f04a3a;
+}
+button {
+	margin: 10px;
+}
+
+.test {
+	width: 80%;
+	padding: 10px 20px;
+	background: #fff;
+	border-radius: 3px;
+}
+.test .title {
+	color: #333;
+	font-size: 15px;
+	text-align: center;
+	line-height: 30px;
+}
+.test .text {
+	color: #f90;
+	font-size: 12px;
+	line-height: 30px;
+}
+.test .btn-group {
+	height: 40px;
+	text-align: center;
+}
+.test .btn-group .btn {
+	display: inline-block;
+	min-width: 80px;
+	margin: 0 5px;
+	padding: 5px 10px;
+	border: 1px solid #f00;
+	color: #f00;
+	border-radius: 3px;
+}
+</style>
+</head>
+<body>
+<button id="dialog">dialog</button>
+<button id="message">message</button>
+<button id="error">error</button>
+<button id="loading">loading</button>
+<button id="smLoading">smLoading</button>
+<button id="other">自定义</button>
+
+<div class="test">
+	<div class="title">自定义弹窗</div>
+	<div class="text">我是内容内容</div>
+	<div class="btn-group">
+		<a href="#" class="btn">按钮1</a>
+		<a href="#" class="btn">按钮2</a>
+	</div>
+</div>
+
+
+<script src="./js/zepto.min.js"></script>
+<script src="./js/m-ui.js"></script>
+<script>
+$("#dialog").on("click", function() {
+	ui.dialog({
+		data: {
+			text: "测试测试"
+		}
+	});
+});
+$("#message").on("click", function() {
+	ui.message("message");
+});
+$("#error").on("click", function() {
+	ui.error("error");
+});
+$("#loading").on("click", function() {
+	ui.loading("loading");
+});
+$("#smLoading").on("click", function() {
+	ui.smLoading("smLoading");
+});
+
+$("#other").on("click", function() {
+	ui.dialog({
+		content: '<div class="test ui-center">' +
+			'<div class="title">{{title}}</div>' +
+			'<div class="text">{{text}}</div>' +
+			'<div class="btn-group">' +
+				'{{btnContent}}' + 
+			'</div>' +
+		'</div>',			// String   弹出弹窗的内容 
+		data: {
+			title: "测试标题",
+			text: "测试内容",
+			btn: [{
+				text: "确认",
+				"data-type": "close",
+				"class": "btn",
+				id: "btn1"
+			}, {
+				text: "取消",
+				"data-type": "close",
+				"class": "btn",
+				id: "btn2"
+			}]
+		},				// String	弹出弹窗的文案
+		needOverlay: true,		// Boolean  是否添加遮罩层
+		autoClose: 0,			// Number   自动关闭弹出窗时间,0为不自动关闭
+		afterInit: null,
+		callback: null			// Function 关闭弹出层执行的回调函数
+	});
+});
+</script>
+</body>
+</html>
