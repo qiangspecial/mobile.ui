@@ -203,7 +203,7 @@ var ui = ui || {};
 		return new Dialog(o);
 	};
 
-	// 提示弹窗
+	// 提示
 	ui.message = function(text, callback) {
 		return new Dialog({
 			content: '<div class="ui-sm-dialog ui-center">{{text}}</div>',
